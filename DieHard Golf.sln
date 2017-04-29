@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DieHard Golf.Plugins", "DieHard Golf.Plugins.csproj", "{47E467A1-7D59-40C3-BEC8-AB1046F66269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DieHard Golf.Editor.Plugins", "DieHard Golf.Editor.Plugins.csproj", "{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47E467A1-7D59-40C3-BEC8-AB1046F66269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E467A1-7D59-40C3-BEC8-AB1046F66269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E467A1-7D59-40C3-BEC8-AB1046F66269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E467A1-7D59-40C3-BEC8-AB1046F66269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
