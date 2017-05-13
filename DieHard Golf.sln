@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DieHard Golf", "DieHard Gol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DieHard Golf.Editor.Plugins", "DieHard Golf.Editor.Plugins.csproj", "{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DieHard Golf.Editor", "DieHard Golf.Editor.csproj", "{65450662-A6DE-2C48-4061-A09A1BD00C1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA9FDE4-8F9E-D18F-21CB-B176172912EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65450662-A6DE-2C48-4061-A09A1BD00C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65450662-A6DE-2C48-4061-A09A1BD00C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65450662-A6DE-2C48-4061-A09A1BD00C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65450662-A6DE-2C48-4061-A09A1BD00C1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
