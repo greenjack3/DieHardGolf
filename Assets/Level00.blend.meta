@@ -14,6 +14,13 @@ ModelImporter:
     100012: Plane
     100014: Lava
     100016: Cube
+    100018: Cylinder
+    100020: Icosphere
+    100022: Rock00
+    100024: Rock01
+    100026: Rock02
+    100028: Tree01Leaf
+    100030: Tree01Trunk
     400000: Land
     400002: //RootNode
     400004: River
@@ -23,6 +30,13 @@ ModelImporter:
     400012: Plane
     400014: Lava
     400016: Cube
+    400018: Cylinder
+    400020: Icosphere
+    400022: Rock00
+    400024: Rock01
+    400026: Rock02
+    400028: Tree01Leaf
+    400030: Tree01Trunk
     2300000: Land
     2300002: River
     2300004: SCALE
@@ -31,6 +45,13 @@ ModelImporter:
     2300010: Plane
     2300012: Lava
     2300014: Cube
+    2300016: Cylinder
+    2300018: Icosphere
+    2300020: Rock00
+    2300022: Rock01
+    2300024: Rock02
+    2300026: Tree01Leaf
+    2300028: Tree01Trunk
     3300000: Land
     3300002: River
     3300004: SCALE
@@ -39,6 +60,13 @@ ModelImporter:
     3300010: Plane
     3300012: Lava
     3300014: Cube
+    3300016: Cylinder
+    3300018: Icosphere
+    3300020: Rock00
+    3300022: Rock01
+    3300024: Rock02
+    3300026: Tree01Leaf
+    3300028: Tree01Trunk
     4300000: Tree00trunk
     4300002: Tree00leaf
     4300004: River
@@ -47,6 +75,13 @@ ModelImporter:
     4300010: Plane
     4300012: Lava
     4300014: Cube
+    4300016: Cylinder
+    4300018: Icosphere
+    4300020: Rock00
+    4300022: Rock02
+    4300024: Rock01
+    4300026: Tree01Trunk
+    4300028: Tree01Leaf
     7400000: Default Take
     9500000: //RootNode
   materials:
