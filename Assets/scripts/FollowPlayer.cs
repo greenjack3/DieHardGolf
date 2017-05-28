@@ -11,7 +11,7 @@ public class FollowPlayer : MonoBehaviour {
     private Transform previousTransform;
     Vector3 velocity = Vector3.zero;
 	
-	void Update ()
+	void FixedUpdate ()
     {
         previousTransform = transform;
 

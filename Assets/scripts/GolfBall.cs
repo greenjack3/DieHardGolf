@@ -53,11 +53,11 @@ public class GolfBall : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
-        if (other.GetComponent<Hitable>())
+        if (other.gameObject.GetComponent<Hitable>())
         {
-            other.GetComponent<Hitable>().HitMe(dmg, team);
+            other.gameObject.GetComponent<Hitable>().HitMe(dmg, team);
         }
     }
     public void Start()

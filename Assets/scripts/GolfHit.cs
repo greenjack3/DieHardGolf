@@ -8,6 +8,7 @@ public class GolfHit : MonoBehaviour {
 
     public float powerGround;
     public float powerAir;
+    public float power;
 
     public Transform vectorG;
     public Transform vectorA;
