@@ -12,26 +12,49 @@ public class GolfHit : MonoBehaviour {
     public Transform vectorG;
     public Transform vectorA;
 
+	bool aiming;
+	float cd;
+	bool aimAir;
+
     Animator anim;
 
 	void Start ()
     {
         anim = GetComponent<Animator>();
+		aiming = false;
 	}
 	
 	void Update ()
     {
-        if (Input.GetButtonDown(player + "Fire1"))
+		if (Input.GetButtonDown(player + "Fire2") && !aiming)
         {
             anim.SetTrigger("Attack");
+			aiming = true;
+			aimAir = false;
         }
+		if (Input.GetButtonDown(player + "Fire3") && !aiming)
+		{
+			anim.SetTrigger("Attack");
+			aiming = true;
+			aimAir = true;
+		}
+		if (aiming) 
+		{
+			cd += Time.deltaTime;
+			if (cd >= 2)
+				aiming = false;
+		}
 	}
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<GolfBall>())
         {
-            Debug.Log("GolfBall Hit!");
+			if (!aimAir)
+				other.GetComponent<Rigidbody>().AddForce(vectorG.forward * powerGround);
+
+			if (aimAir)
+				other.GetComponent<Rigidbody>().AddForce(vectorA.forward * powerAir);
         }
     }
 }
