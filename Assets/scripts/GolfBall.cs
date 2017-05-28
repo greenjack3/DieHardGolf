@@ -18,6 +18,8 @@ public class GolfBall : MonoBehaviour
     public float minSpeedtoDmg; // minimalna prędkość do zadawania obrażeń 
     Rigidbody rb;
     public float maxDmg;
+    public int team;
+
     #endregion
 
     public void calcDmg() // obliczanie obrażeń 
@@ -51,7 +53,13 @@ public class GolfBall : MonoBehaviour
         
     }
 
-
+    public void OnCollisionEnter(Collider other)
+    {
+        if (other.GetComponent<Hitable>())
+        {
+            other.GetComponent<Hitable>().HitMe(dmg, team);
+        }
+    }
     public void Start()
     {
         speed = curSpeed;

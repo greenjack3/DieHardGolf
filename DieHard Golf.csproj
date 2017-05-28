@@ -140,6 +140,8 @@
     <Compile Include="Assets\scripts\FollowPlayer.cs" />
     <Compile Include="Assets\scripts\GolfBall.cs" />
     <Compile Include="Assets\scripts\GolfHit.cs" />
+    <Compile Include="Assets\scripts\Hitable.cs" />
+    <Compile Include="Assets\scripts\HitablePlayer.cs" />
     <Compile Include="Assets\scripts\RotateHorizontal.cs" />
   </ItemGroup>
   <ItemGroup>
