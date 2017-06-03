@@ -27,6 +27,7 @@ public class GolfBall : MonoBehaviour
         if (speed < minSpeedtoDmg)
         {
             dmg = 0;
+            team = 0;
         }
 
         else if (speed >= minSpeedtoDmg)

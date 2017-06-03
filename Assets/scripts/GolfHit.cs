@@ -5,11 +5,14 @@ using UnityEngine;
 public class GolfHit : MonoBehaviour {
 
     public string player;
+    public int teamNo;
 
     public float powerGround;
     public float powerAir;
-    public float power;
-
+    public float powerBuildUp;
+    float power;
+    public float buildUpSpeed;
+   
     public Transform vectorG;
     public Transform vectorA;
 
@@ -27,18 +30,35 @@ public class GolfHit : MonoBehaviour {
 	
 	void Update ()
     {
-		if (Input.GetButtonDown(player + "Fire1") && !aiming)
+        if (Input.GetButton(player + "Fire1") && !aiming)
+        {
+            aiming = true;
+            aimAir = false;
+
+            powerBuildUp += Time.deltaTime * buildUpSpeed;
+        }
+
+        if (Input.GetButton(player + "Fire2") && !aiming)
+        {
+            aiming = true;
+            aimAir = true;
+
+            powerBuildUp += Time.deltaTime * buildUpSpeed;
+        }
+
+        if (Input.GetButtonUp(player + "Fire1"))
         {
             anim.SetTrigger("Attack");
-			aiming = true;
-			aimAir = false;
-        }
-		if (Input.GetButtonDown(player + "Fire2") && !aiming)
+            power = powerBuildUp;
+            powerBuildUp = 0;
+		}
+		if (Input.GetButtonUp(player + "Fire2"))
 		{
 			anim.SetTrigger("Attack");
-			aiming = true;
-			aimAir = true;
-		}
+            power = powerBuildUp;
+            powerBuildUp = 0;
+        }
+
 		if (aiming) 
 		{
 			cd += Time.deltaTime;
@@ -51,11 +71,15 @@ public class GolfHit : MonoBehaviour {
     {
         if (other.GetComponent<GolfBall>())
         {
-			if (!aimAir)
-				other.GetComponent<Rigidbody>().AddForce(vectorG.forward * powerGround);
+            other.GetComponent<GolfBall>().team = teamNo;
+
+            if (!aimAir)
+				other.GetComponent<Rigidbody>().AddForce(vectorG.forward * powerGround * power);
 
 			if (aimAir)
-				other.GetComponent<Rigidbody>().AddForce(vectorA.forward * powerAir);
+				other.GetComponent<Rigidbody>().AddForce(vectorA.forward * powerAir * power);
+
+            power = 0;
         }
     }
 }

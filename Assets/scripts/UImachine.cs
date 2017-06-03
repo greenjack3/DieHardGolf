@@ -14,6 +14,6 @@ public class UImachine : MonoBehaviour {
 	void Update ()
     {
         hp.text = "Health: " + playerhealth.hp;
-        power.text = "Power: " + player.power + "%";
+        power.text = "Power: " + (int)player.powerBuildUp + "%";
 	}
 }
