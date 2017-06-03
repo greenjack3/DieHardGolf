@@ -10,6 +10,8 @@ public class RotateHorizontal : MonoBehaviour {
     public float verSpeed;
 
     public GameObject secondArm;
+    public GameObject airHitVector;
+    public float airHitOffset;
     public float angle1;
     public float angle2;
 
@@ -31,5 +33,6 @@ public class RotateHorizontal : MonoBehaviour {
         }
 
         secondArm.transform.eulerAngles = new Vector3(xAngle, secondArm.transform.rotation.eulerAngles.y, secondArm.transform.rotation.eulerAngles.z);
+        airHitVector.transform.eulerAngles = new Vector3(xAngle+airHitOffset, airHitVector.transform.rotation.eulerAngles.y, airHitVector.transform.rotation.eulerAngles.z);
     }
 }

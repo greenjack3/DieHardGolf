@@ -27,13 +27,13 @@ public class GolfHit : MonoBehaviour {
 	
 	void Update ()
     {
-		if (Input.GetButtonDown(player + "Fire2") && !aiming)
+		if (Input.GetButtonDown(player + "Fire1") && !aiming)
         {
             anim.SetTrigger("Attack");
 			aiming = true;
 			aimAir = false;
         }
-		if (Input.GetButtonDown(player + "Fire3") && !aiming)
+		if (Input.GetButtonDown(player + "Fire2") && !aiming)
 		{
 			anim.SetTrigger("Attack");
 			aiming = true;
