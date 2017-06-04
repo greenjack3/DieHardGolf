@@ -7,11 +7,18 @@ public class HitablePlayer : Hitable {
     public float hp;
     public int teamNo;
 
+    GameControler gcont;
+
+    private void Start()
+    {
+        gcont = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControler>();
+    }
+
     public override void HitMe(float dmg, int team)
     {
         if(team != teamNo)
         {
-            hp -= dmg;
+            hp += dmg;
         }
 
         if(hp <= 0)
@@ -19,6 +26,8 @@ public class HitablePlayer : Hitable {
             hp = 0;
             Death();
         }
+        if (team != 0)
+            gcont.GiveVP(team);
     }
 
     void Death()

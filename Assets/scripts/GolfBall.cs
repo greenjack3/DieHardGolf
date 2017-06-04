@@ -19,7 +19,10 @@ public class GolfBall : MonoBehaviour
     Rigidbody rb;
     public float maxDmg;
     public int team;
-
+    public Material[] materials;
+    public float idleTimer;
+    float timer;
+    bool idle = false;
     #endregion
 
     public void calcDmg() // obliczanie obrażeń 
@@ -27,12 +30,13 @@ public class GolfBall : MonoBehaviour
         if (speed < minSpeedtoDmg)
         {
             dmg = 0;
-            team = 0;
+            idle = true;
         }
 
         else if (speed >= minSpeedtoDmg)
         {
             dmg = speed * dmgMod;
+            idle = false;
         }
 
         if (dmg >= maxDmg)
@@ -43,6 +47,7 @@ public class GolfBall : MonoBehaviour
 
     public void FixedUpdate()
     {
+        ChangeColor();
         curSpeed = rb.velocity.magnitude;
 
         if (speed != curSpeed)
@@ -50,6 +55,20 @@ public class GolfBall : MonoBehaviour
         {
             speed = curSpeed;
             calcDmg();
+        }
+        if (idle)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                idle = false;
+                team = 0;
+                timer = idleTimer;
+            }
+        }
+        else
+        {
+            timer = idleTimer;
         }
         
     }
@@ -61,10 +80,34 @@ public class GolfBall : MonoBehaviour
             other.gameObject.GetComponent<Hitable>().HitMe(dmg, team);
         }
     }
+    void ChangeColor()
+    {
+        switch (team)
+        {
+            case 0:
+                GetComponent<Renderer>().material = materials[0];
+                break;
+            case 1:
+                GetComponent<Renderer>().material = materials[1];
+                break;
+            case 2:
+                GetComponent<Renderer>().material = materials[2];
+                break;
+            case 3:
+                GetComponent<Renderer>().material = materials[3];
+                break;
+            case 4:
+                GetComponent<Renderer>().material = materials[4];
+                break;
+
+        }
+    }
+
     public void Start()
     {
         speed = curSpeed;
         rb = GetComponent<Rigidbody>();
+        timer = idleTimer;
     } 
 }
 

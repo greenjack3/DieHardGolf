@@ -46,6 +46,11 @@ public class GolfHit : MonoBehaviour {
             powerBuildUp += Time.deltaTime * buildUpSpeed;
         }
 
+        if (powerBuildUp >= 1)
+        {
+            powerBuildUp = 1;
+        }
+
         if (Input.GetButtonUp(player + "Fire1"))
         {
             anim.SetTrigger("Attack");

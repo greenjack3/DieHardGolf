@@ -13,7 +13,7 @@ public class UImachine : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        hp.text = "Health: " + playerhealth.hp;
-        power.text = "Power: " + (int)player.powerBuildUp + "%";
+        hp.text = "Damage Taken: " + playerhealth.hp;
+        power.text = "Power: " + player.powerBuildUp*100 + "%";
 	}
 }

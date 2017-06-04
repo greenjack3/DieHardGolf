@@ -138,6 +138,7 @@
     <Compile Include="Assets\importedAssets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\scripts\Controls.cs" />
     <Compile Include="Assets\scripts\FollowPlayer.cs" />
+    <Compile Include="Assets\scripts\GameControler.cs" />
     <Compile Include="Assets\scripts\GolfBall.cs" />
     <Compile Include="Assets\scripts\GolfHit.cs" />
     <Compile Include="Assets\scripts\Hitable.cs" />
