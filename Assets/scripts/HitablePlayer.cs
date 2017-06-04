@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HitablePlayer : Hitable {
 
+    public GameObject playerBody;
     public float hp;
     public int teamNo;
 
@@ -19,19 +20,16 @@ public class HitablePlayer : Hitable {
         if(team != teamNo)
         {
             hp += dmg;
+
+            if (team != 0)
+                gcont.GiveVP(team);
         }
 
-        if(hp <= 0)
-        {
-            hp = 0;
-            Death();
-        }
-        if (team != 0)
-            gcont.GiveVP(team);
+        
     }
 
-    void Death()
+    public void Death()
     {
-        Debug.Log("IM DEAD");
+        Destroy(playerBody);
     }
 }
