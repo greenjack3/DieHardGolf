@@ -20,6 +20,8 @@ public class GolfBall : MonoBehaviour
     public float maxDmg;
     public int team;
     public Material[] materials;
+    private TrailRenderer trail;
+    public Material[] trails;
     public float idleTimer;
     float timer;
     bool idle = false;
@@ -31,12 +33,14 @@ public class GolfBall : MonoBehaviour
         {
             dmg = 0;
             idle = true;
+            //trail.enabled = false;
         }
 
         else if (speed >= minSpeedtoDmg)
         {
             dmg = speed * dmgMod;
             idle = false;
+            //trail.enabled = true;
         }
 
         if (dmg >= maxDmg)
@@ -86,18 +90,23 @@ public class GolfBall : MonoBehaviour
         {
             case 0:
                 GetComponent<Renderer>().material = materials[0];
+                trail.material = trails[0];
                 break;
             case 1:
                 GetComponent<Renderer>().material = materials[1];
+                trail.material = trails[1];
                 break;
             case 2:
                 GetComponent<Renderer>().material = materials[2];
+                trail.material = trails[2];
                 break;
             case 3:
                 GetComponent<Renderer>().material = materials[3];
+                trail.material = trails[3];
                 break;
             case 4:
                 GetComponent<Renderer>().material = materials[4];
+                trail.material = trails[4];
                 break;
 
         }
@@ -108,6 +117,7 @@ public class GolfBall : MonoBehaviour
         speed = curSpeed;
         rb = GetComponent<Rigidbody>();
         timer = idleTimer;
+        trail = GetComponent<TrailRenderer>();
     } 
 }
 
