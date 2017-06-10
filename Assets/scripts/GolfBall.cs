@@ -19,6 +19,9 @@ public class GolfBall : MonoBehaviour
     Rigidbody rb;
     public float maxDmg;
     public int team;
+    public float explosionMultiplier;
+    public bool airborne;
+    public GameObject explosion;
     public Material[] materials;
     private TrailRenderer trail;
     public Material[] trails;
@@ -79,6 +82,13 @@ public class GolfBall : MonoBehaviour
 
     public void OnCollisionEnter(Collision other)
     {
+        if (airborne)
+        {
+            GameObject newExplosion = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
+            newExplosion.GetComponent<Explosion>().dmg = dmg * explosionMultiplier;
+            newExplosion.GetComponent<Explosion>().teamNo = team;
+            airborne = false;
+        }
         if (other.gameObject.GetComponent<Hitable>())
         {
             other.gameObject.GetComponent<Hitable>().HitMe(dmg, team);

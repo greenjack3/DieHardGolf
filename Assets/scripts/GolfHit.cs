@@ -30,53 +30,50 @@ public class GolfHit : MonoBehaviour {
 	
 	void Update ()
     {
-        if (Input.GetButton(player + "Fire1") && !aiming)
+        if (Input.GetAxis(player + "Fire1") >= 0.5 && !aiming)
         {
             aiming = true;
-            aimAir = false;
-
-            powerBuildUp += Time.deltaTime * buildUpSpeed;
+            aimAir = false;          
         }
 
-        if (Input.GetButton(player + "Fire2") && !aiming)
+        if (Input.GetAxis(player + "Fire2") >= 0.5 && !aiming)
         {
             aiming = true;
-            aimAir = true;
-
-            powerBuildUp += Time.deltaTime * buildUpSpeed;
+            aimAir = true;        
+        }
+                
+        if (Input.GetAxis(player + "Fire1") < 0.5 && aiming && !aimAir)
+        {
+            anim.SetTrigger("Attack");
+            power = powerBuildUp;
+            powerBuildUp = 0;
+            aiming = false;
+		}
+		if (Input.GetAxis(player + "Fire2") < 0.5 && aiming && aimAir)
+		{
+			anim.SetTrigger("Attack");
+            power = powerBuildUp;
+            powerBuildUp = 0;
+            aiming = false;
         }
 
+        if (aiming)
+        {
+            powerBuildUp += Time.deltaTime * buildUpSpeed;
+        }
         if (powerBuildUp >= 1)
         {
             powerBuildUp = 1;
         }
 
-        if (Input.GetButtonUp(player + "Fire1"))
-        {
-            anim.SetTrigger("Attack");
-            power = powerBuildUp;
-            powerBuildUp = 0;
-		}
-		if (Input.GetButtonUp(player + "Fire2"))
-		{
-			anim.SetTrigger("Attack");
-            power = powerBuildUp;
-            powerBuildUp = 0;
-        }
-
-		if (aiming) 
-		{
-			cd += Time.deltaTime;
-			if (cd >= 2)
-				aiming = false;
-		}
-	}
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<GolfBall>())
         {
             other.GetComponent<GolfBall>().team = teamNo;
+            other.GetComponent<GolfBall>().airborne = aimAir;
 
             if (!aimAir)
 				other.GetComponent<Rigidbody>().AddForce(vectorG.forward * powerGround * power);
