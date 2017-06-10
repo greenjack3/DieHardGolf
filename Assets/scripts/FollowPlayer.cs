@@ -9,15 +9,14 @@ public class FollowPlayer : MonoBehaviour {
     public float lerpSpeed;
 
     private Transform previousTransform;
-    Vector3 velocity = Vector3.zero;
-	
-	void Update ()
+    	
+	void FixedUpdate ()
     {
         previousTransform = transform;
+        Vector3 playerPosition = playerFollowed.position + new Vector3(0, yOffset, 0);
 
-        Vector3 interpolatedPosition = Vector3.SmoothDamp(previousTransform.position, playerFollowed.position, ref velocity, Time.deltaTime*lerpSpeed);
+        Vector3 interpolatedPosition = Vector3.Lerp(previousTransform.position, playerPosition, Time.deltaTime*lerpSpeed);
 
-        interpolatedPosition.y += yOffset;
-        transform.position = interpolatedPosition;
+       transform.position = interpolatedPosition;
 	}
 }
