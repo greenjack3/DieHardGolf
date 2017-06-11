@@ -1,9 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Characters.ThirdPerson
-{
-    [RequireComponent(typeof(ThirdPersonCharacter))]
     public class Controls : MonoBehaviour
     {
         private ThirdPersonCharacter m_Character; 
@@ -48,4 +45,3 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_Jump = false;
         }
     }
-}

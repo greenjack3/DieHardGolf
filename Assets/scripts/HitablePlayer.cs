@@ -9,6 +9,7 @@ public class HitablePlayer : Hitable {
     public int teamNo;
 
     GameControler gcont;
+    public PlayerDisabler disabler;
 
     private void Start()
     {
@@ -30,6 +31,6 @@ public class HitablePlayer : Hitable {
 
     public void Death()
     {
-        Destroy(playerBody);
+        disabler.DisableControls();
     }
 }

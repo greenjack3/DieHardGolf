@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class GameControler : MonoBehaviour {
+public class GameControler : MonoBehaviour
+{
 
     public HitablePlayer player1;
     public HitablePlayer player2;
@@ -12,19 +14,32 @@ public class GameControler : MonoBehaviour {
     public Image[] player2VP;
     public Text player1WIN;
     public Text player2WIN;
+    public Text playAgainText;
+    public GameObject endCamSetup;
+    public Transform endCamSpawner;
 
     public float time;
     public int victoryPoints;
     int p1VP;
     int p2VP;
+    bool roundOver;
+
     private void Start()
     {
         time *= 60;
         player1WIN.enabled = false;
         player2WIN.enabled = false;
+        playAgainText.enabled = false;
+        roundOver = false;
     }
-    void Update ()
+    void Update()
     {
+        if (roundOver)
+        {
+            CheckLevelRestart();
+            return;
+        }
+
         time -= Time.deltaTime;
         if (time <= 0)
         {
@@ -36,7 +51,7 @@ public class GameControler : MonoBehaviour {
         int seconds = (int)time % 60;
         timer.text = "" + minutes + ":" + seconds;
         UpdateVP();
-	}
+    }
 
     public void GiveVP(int player)
     {
@@ -65,9 +80,9 @@ public class GameControler : MonoBehaviour {
             player2VP[i].enabled = false;
         }
 
-        for (int i = p1VP-1; i > -1; i--)
+        for (int i = p1VP - 1; i > -1; i--)
         {
-            if(i < player1VP.Length)
+            if (i < player1VP.Length)
                 player1VP[i].enabled = true;
         }
         for (int i = p2VP - 1; i > -1; i--)
@@ -105,6 +120,8 @@ public class GameControler : MonoBehaviour {
         player1.Death();
         player2.Death();
 
+        Instantiate(endCamSetup, endCamSpawner);
+
         switch (player)
         {
             case 1:
@@ -113,6 +130,26 @@ public class GameControler : MonoBehaviour {
             case 2:
                 player2WIN.enabled = true;
                 break;
+        }
+
+        playAgainText.enabled = true;
+
+        roundOver = true;
+    }
+
+    void CheckLevelRestart()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        bool reloadScene = false;
+
+        if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape))
+        {
+            reloadScene = true;
+        }
+
+        if (reloadScene)
+        {
+            SceneManager.LoadScene(scene.name);
         }
     }
 }
