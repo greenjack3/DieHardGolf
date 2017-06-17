@@ -156,7 +156,7 @@ public class TPPMovement : MonoBehaviour {
         Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
         m_Rigidbody.AddForce(extraGravityForce);
 
-        //m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+        m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
     }
 
 
@@ -169,7 +169,7 @@ public class TPPMovement : MonoBehaviour {
             m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, m_JumpPower, m_Rigidbody.velocity.z);
             m_IsGrounded = false;
             m_Animator.applyRootMotion = false;
-            //m_GroundCheckDistance = 0.1f;
+            m_GroundCheckDistance = 0.1f;
         }
     }
 
