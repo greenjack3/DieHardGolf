@@ -39,6 +39,10 @@ public class TPPMovement : MonoBehaviour {
         m_OrigGroundCheckDistance = m_GroundCheckDistance;
     }
 
+    public void Update()
+    {
+        CheckGroundStatus();
+    }
 
     public void Move(Vector3 move, bool crouch, bool jump)
     {
@@ -48,7 +52,7 @@ public class TPPMovement : MonoBehaviour {
         // direction.
         if (move.magnitude > 1f) move.Normalize();
         move = transform.InverseTransformDirection(move);
-        CheckGroundStatus();
+      //  CheckGroundStatus();
         move = Vector3.ProjectOnPlane(move, m_GroundNormal);
         m_TurnAmount = Mathf.Atan2(move.x, move.z);
         m_ForwardAmount = move.z;
