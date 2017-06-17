@@ -3,24 +3,26 @@ using UnityEngine;
 
     public class Controls : MonoBehaviour
     {
-        private ThirdPersonCharacter m_Character; 
-        public Transform m_Cam;                  
-        private Vector3 m_CamForward;             
-        private Vector3 m_Move;
-        private bool m_Jump;                      
+        private TPPMovement movement; 
+        public Transform playerCamera;                  
+        private Vector3 pcamForward;             
+        private Vector3 movementVector;
+        private bool willJump;                      
         public string player;
+        public GolfHit gh;
+        public float speedDecreaseOnAim;
 
         private void Start()
         {
-            m_Character = GetComponent<ThirdPersonCharacter>();
+            movement = GetComponent<TPPMovement>();
         }
 
 
         private void Update()
         {
-            if (!m_Jump)
+            if (!willJump)
             {
-                m_Jump = Input.GetButtonDown(player + "Jump");
+                willJump = Input.GetButtonDown(player + "Jump");
             }
         }
 
@@ -29,19 +31,21 @@ using UnityEngine;
         {
             float h = Input.GetAxis(player + "Horizontal");
             float v = Input.GetAxis(player + "Vertical");
-            bool crouch = false;
 
-            if (m_Cam != null)
+        if (gh.aiming)
+            v *= speedDecreaseOnAim;
+            
+            if (playerCamera != null)
             {
-                m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
-                m_Move = v * m_CamForward + h * m_Cam.right;
+                pcamForward = Vector3.Scale(playerCamera.forward, new Vector3(1, 0, 1)).normalized;
+                movementVector = v * pcamForward + h * playerCamera.right;
             }
             else
             {
-                m_Move = v * Vector3.forward + h * Vector3.right;
+                movementVector = v * Vector3.forward + h * Vector3.right;
             }
 
-            m_Character.Move(m_Move, crouch, m_Jump);
-            m_Jump = false;
+            movement.Move(movementVector, false, willJump);
+            willJump = false;
         }
     }

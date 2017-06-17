@@ -145,6 +145,7 @@
     <Compile Include="Assets\scripts\MainMenuHandler.cs" />
     <Compile Include="Assets\scripts\PlayerDisabler.cs" />
     <Compile Include="Assets\scripts\RotateHorizontal.cs" />
+    <Compile Include="Assets\scripts\TPPMovement.cs" />
     <Compile Include="Assets\scripts\UImachine.cs" />
   </ItemGroup>
   <ItemGroup>
