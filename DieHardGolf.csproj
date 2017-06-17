@@ -225,6 +225,7 @@
     <None Include="Assets\importedAssets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\importedAssets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\importedAssets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\scripts\backup - TTP MOVEMENT.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -45,7 +45,7 @@ using UnityEngine;
                 movementVector = v * Vector3.forward + h * Vector3.right;
             }
 
-            movement.Move(movementVector, false, willJump);
+            movement.Move(movementVector, willJump);
             willJump = false;
         }
     }

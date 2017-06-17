@@ -29,7 +29,6 @@ public class GolfHit : MonoBehaviour
 
     bool attack;
     public float attackAnimSpeed;
-    public float attackTime;
     float timePassed;
     int key = 0;
     BoxCollider col;
@@ -37,7 +36,6 @@ public class GolfHit : MonoBehaviour
     void Start()
     {
         aiming = false;
-        timePassed = attackTime;
         col = GetComponent<BoxCollider>();
         col.enabled = false;
     }
@@ -86,15 +84,17 @@ public class GolfHit : MonoBehaviour
         }
         if (attack)
         {
+            timePassed += Time.deltaTime * attackAnimSpeed;
+
             if (key == 1)
             {
-                golfClub.transform.position = Vector3.Lerp(neutral.position, attack1.position, Time.deltaTime * attackAnimSpeed);
-                golfClub.transform.rotation = Quaternion.Slerp(neutral.rotation, attack1.rotation, Time.deltaTime * attackAnimSpeed);
+                golfClub.transform.position = Vector3.Lerp(neutral.position, attack1.position, timePassed);
+                golfClub.transform.rotation = Quaternion.Slerp(neutral.rotation, attack1.rotation, timePassed);
                 timePassed -= Time.deltaTime;
 
-                if (timePassed <= 0)
+                if (timePassed >= 1)
                 {
-                    timePassed = attackTime;
+                    timePassed = 0;
                     key = 2;
                     golfClub.transform.position = attack1.position;
                     golfClub.transform.rotation = attack1.rotation;
@@ -103,13 +103,13 @@ public class GolfHit : MonoBehaviour
             }
             if (key == 2)
             {
-                golfClub.transform.position = Vector3.Lerp(attack1.position, attack2.position, Time.deltaTime * attackAnimSpeed);
-                golfClub.transform.rotation = Quaternion.Slerp(attack1.rotation, attack2.rotation, Time.deltaTime * attackAnimSpeed);
+                golfClub.transform.position = Vector3.Lerp(attack1.position, attack2.position, timePassed);
+                golfClub.transform.rotation = Quaternion.Slerp(attack1.rotation, attack2.rotation, timePassed);
                 timePassed -= Time.deltaTime;
 
-                if (timePassed <= 0)
+                if (timePassed >= 1)
                 {
-                    timePassed = attackTime;
+                    timePassed = 0;
                     key = 3;
                     golfClub.transform.position = attack2.position;
                     golfClub.transform.rotation = attack2.rotation;
@@ -118,13 +118,13 @@ public class GolfHit : MonoBehaviour
             }
             if (key == 3)
             {
-                golfClub.transform.position = Vector3.Lerp(attack2.position, neutral.position, Time.deltaTime * attackAnimSpeed);
-                golfClub.transform.rotation = Quaternion.Slerp(attack2.rotation, neutral.rotation, Time.deltaTime * attackAnimSpeed);
+                golfClub.transform.position = Vector3.Lerp(attack2.position, neutral.position, timePassed);
+                golfClub.transform.rotation = Quaternion.Slerp(attack2.rotation, neutral.rotation, timePassed);
                 timePassed -= Time.deltaTime;
 
-                if (timePassed <= 0)
+                if (timePassed >= 1)
                 {
-                    timePassed = attackTime;
+                    timePassed = 0;
                     key = 0;
                     attack = false;
                     golfClub.transform.position = neutral.position;
