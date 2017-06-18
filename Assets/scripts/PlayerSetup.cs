@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerSetup : MonoBehaviour {
 
+    public RotateHorizontal camcontrols;
     public Controls controls;
     public GolfHit gh;
     public HitablePlayer hp;
@@ -13,6 +14,7 @@ public class PlayerSetup : MonoBehaviour {
 
     private void Start()
     {
+        camcontrols.player = player;
         controls.player = player;
         gh.player = player;
         gh.teamNo = teamNo;

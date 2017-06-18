@@ -38,8 +38,9 @@ public class Explosion : MonoBehaviour {
             newExplosion.GetComponent<Explosion>().dmg = dmg/increase;
             newExplosion.GetComponent<Explosion>().teamNo = teamNo;
             newExplosion.GetComponent<Explosion>().canDamage = canDamage;
+                        
             canSpawn = false;
-            Destroy(gameObject);
+            Destroy(gameObject);            
         }
 		
 	}

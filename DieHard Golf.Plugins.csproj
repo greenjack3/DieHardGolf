@@ -145,9 +145,6 @@
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\importedAssets\Fantasy Skybox FREE\Fog and Ambient reference.txt" />
     <None Include="Assets\importedAssets\Fantasy Skybox FREE\Readme.txt" />
-    <None Include="Assets\importedAssets\HolyShift\Shaders\FXWaterLowpoly.shader" />
-    <None Include="Assets\importedAssets\HolyShift\Shaders\WaterInclude.cginc" />
-    <None Include="Assets\importedAssets\HolyShift\readme.txt" />
     <None Include="Assets\importedAssets\JMO Assets\!JMO Assets Readme.txt" />
     <None Include="Assets\importedAssets\JMO Assets\MatCap Shaders\Shaders\MatCap_Lit.shader" />
     <None Include="Assets\importedAssets\JMO Assets\MatCap Shaders\Shaders\MatCap_Plain.shader" />
@@ -202,6 +199,7 @@
     <None Include="Assets\importedAssets\PostProcessing\Resources\Shaders\Uber.shader" />
     <None Include="Assets\importedAssets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\importedAssets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\scripts\backup - TTP MOVEMENT.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
